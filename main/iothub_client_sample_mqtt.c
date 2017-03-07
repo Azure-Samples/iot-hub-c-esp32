@@ -11,6 +11,8 @@
 #include "azure_c_shared_utility/platform.h"
 #include "iothubtransportmqtt.h"
 
+#include "azure_c_shared_utility/tickcounter.h"
+
 #ifdef MBED_BUILD_TIMESTAMP
 #include "certs.h"
 #endif // MBED_BUILD_TIMESTAMP
@@ -26,6 +28,38 @@ static char propText[1024];
 static bool g_continueRunning;
 #define MESSAGE_COUNT 5
 #define DOWORK_LOOP_NUM     3
+
+static bool doRunTimerTest = true;
+// Timer test
+static void RunTimerTest()
+{
+	time_t timer;
+	char buffer[32];
+	struct tm* tm_info;
+	tickcounter_ms_t ticks = 0;
+
+	(void)printf("Running timer test...\r\n");
+	TICK_COUNTER_HANDLE th = tickcounter_create();
+	if (th != NULL)
+	{
+		for (int i = 0; i < 6; i++)
+		{
+			time(&timer);
+			tm_info = localtime(&timer);
+
+			strftime(buffer, 32, "%Y-%m-%d %H:%M:%S\r\n", tm_info);
+			(void)printf(buffer);
+			tickcounter_get_current_ms(th, &ticks);
+			(void)printf("ticks: %u\r\n", ticks);
+			ThreadAPI_Sleep(1000);
+		}
+		tickcounter_destroy(th);
+	}
+	else
+	{
+		(void)printf("Failed timer test due to NULL tickcounter_create.\r\n");
+	}
+}
 
 
 typedef struct EVENT_INSTANCE_TAG
@@ -192,6 +226,11 @@ void iothub_client_sample_mqtt_run(void)
                     IoTHubClient_LL_DoWork(iotHubClientHandle);
                     ThreadAPI_Sleep(1);
 
+					if (doRunTimerTest)
+					{
+						doRunTimerTest = false;
+						RunTimerTest();
+					}
                     // if (callbackCounter>=MESSAGE_COUNT){
                     //     printf("done sending...\n");
                     //     break;
