@@ -60,10 +60,11 @@ sdk/umqtt/src/mqtt_message.o	\
 \
 \
 \
-sdk/c-utility/adapters/bad-adapters/agenttime_esp32.o	\
-sdk/c-utility/adapters/bad-adapters/platform_esp32.o	\
+sdk/c-utility/adapters/agenttime.o	\
+sdk/c-utility/adapters/platform_openssl.o	\
 sdk/c-utility/adapters/threadapi_freertos.o	\
 sdk/c-utility/adapters/tickcounter_freertos.o	\
+sdk/c-utility/adapters/sntp_lwip.o	\
 sdk/c-utility/adapters/bad-adapters/tlsio_ssl_esp32.o	
 
 COMPONENT_SRCDIRS :=  \
