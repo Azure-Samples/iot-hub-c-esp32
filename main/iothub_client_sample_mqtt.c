@@ -29,7 +29,8 @@ static bool g_continueRunning;
 #define MESSAGE_COUNT 5
 #define DOWORK_LOOP_NUM     3
 
-#if RUN_TIMER_TEST
+//#define ENABLE_TIMER_TEST
+#ifdef ENABLE_TIMER_TEST
 static bool doRunTimerTest = true;
 // Timer test
 static void RunTimerTest()
@@ -61,7 +62,7 @@ static void RunTimerTest()
 		(void)printf("Failed timer test due to NULL tickcounter_create.\r\n");
 	}
 }
-#endif
+#endif //ENABLE_TIMER_TEST
 
 
 typedef struct EVENT_INSTANCE_TAG
@@ -228,13 +229,13 @@ void iothub_client_sample_mqtt_run(void)
                     IoTHubClient_LL_DoWork(iotHubClientHandle);
                     ThreadAPI_Sleep(1);
 
+#ifdef ENABLE_TIMER_TEST
 					if (doRunTimerTest)
 					{
 						doRunTimerTest = false;
-#if RUN_TIMER_TEST
 
 						RunTimerTest();
-#endif
+#endif //ENABLE_TIMER_TEST
 					}
                     // if (callbackCounter>=MESSAGE_COUNT){
                     //     printf("done sending...\n");
