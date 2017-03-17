@@ -235,8 +235,8 @@ void iothub_client_sample_mqtt_run(void)
 						doRunTimerTest = false;
 
 						RunTimerTest();
-#endif //ENABLE_TIMER_TEST
 					}
+#endif //ENABLE_TIMER_TEST
                     // if (callbackCounter>=MESSAGE_COUNT){
                     //     printf("done sending...\n");
                     //     break;
