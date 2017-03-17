@@ -65,6 +65,7 @@ sdk/c-utility/adapters/platform_openssl_compact.o	\
 sdk/c-utility/adapters/threadapi_freertos.o	\
 sdk/c-utility/adapters/tickcounter_freertos.o	\
 sdk/c-utility/adapters/sntp_lwip.o	\
+sdk/c-utility/adapters/ssl_socket_compact.o	\
 sdk/c-utility/adapters/tlsio_openssl_compact.o	
 
 COMPONENT_SRCDIRS :=  \
