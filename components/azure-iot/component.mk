@@ -1,6 +1,12 @@
 #
 # Component Makefile
 #
+
+# Component configuration in preprocessor defines
+CFLAGS += -DUSE_LWIP_SOCKET_FOR_AZURE_IOT 
+
+
+
 #COMPONENT_ADD_INCLUDEDIRS := sdk/iothub_client/inc sdk/c-utility/inc sdk/uamqp/inc 
 
 #COMPONENT_SRCDIRS := sdk/iothub_client/src sdk/c-utility/src sdk/uamqp/src
