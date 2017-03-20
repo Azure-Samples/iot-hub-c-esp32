@@ -253,3 +253,4 @@ paket-files/
 build/
 sdkconfig
 sdkconfig.old
+components/azure-iot/make/
