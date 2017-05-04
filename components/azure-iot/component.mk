@@ -14,6 +14,7 @@ CFLAGS += -DUSE_LWIP_SOCKET_FOR_AZURE_IOT
 COMPONENT_ADD_INCLUDEDIRS :=  \
 sdk/c-utility/inc  \
 sdk/c-utility/inc/azure_c_shared_utility \
+sdk/c-utility/inc/azure_c_shared_utility/lwip \
 sdk/iothub_client/inc \
 sdk/umqtt/inc  \
 sdk/umqtt/inc/azure_umqtt_c 	\
@@ -53,6 +54,7 @@ sdk/c-utility/src/base64.o \
 sdk/iothub_client/src/iothub_client.o	\
 sdk/iothub_client/src/iothub_client_ll.o	\
 sdk/iothub_client/src/iothub_client_ll_uploadtoblob.o	\
+sdk/iothub_client/src/iothub_client_authorization.o	\
 sdk/iothub_client/src/iothub_message.o	\
 sdk/iothub_client/src/iothubtransport.o	\
 sdk/iothub_client/src/iothubtransportmqtt.o	\
@@ -71,7 +73,8 @@ sdk/c-utility/adapters/platform_openssl_compact.o	\
 sdk/c-utility/adapters/threadapi_freertos.o	\
 sdk/c-utility/adapters/tickcounter_freertos.o	\
 sdk/c-utility/adapters/sntp_lwip.o	\
-sdk/c-utility/adapters/ssl_socket_compact.o	\
+sdk/c-utility/adapters/dns.o	\
+sdk/c-utility/adapters/socket_async.o	\
 sdk/c-utility/adapters/tlsio_openssl_compact.o	
 
 COMPONENT_SRCDIRS :=  \
