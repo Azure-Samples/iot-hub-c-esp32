@@ -69,6 +69,7 @@ sdk/umqtt/src/mqtt_message.o	\
 \
 \
 sdk/c-utility/adapters/agenttime.o	\
+sdk/c-utility/src/singlylinkedlist.o	\
 sdk/c-utility/adapters/platform_openssl_compact.o	\
 sdk/c-utility/adapters/threadapi_freertos.o	\
 sdk/c-utility/adapters/tickcounter_freertos.o	\
