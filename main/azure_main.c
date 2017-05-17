@@ -8,7 +8,6 @@
 */
 #include <stdio.h>
 
-//#include "../../../../components/cloud_support/test1/plus.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/event_groups.h"
@@ -16,7 +15,7 @@
 #include "esp_system.h"
 #include "esp_system.h"
 #include "esp_wifi.h"
-#include "esp_event_loop.h"
+#include "esp_event_loop.h" 
 #include "esp_log.h"
 
 #include "nvs_flash.h"
@@ -80,14 +79,11 @@ static void initialise_wifi(void)
 
 void azure_task(void *pvParameter)
 {
-    printf("Hello! My Friend!\n");
+    ESP_LOGI(TAG, "Waiting for WiFi access point ...");
     xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT,
                         false, true, portMAX_DELAY);
-    ESP_LOGI(TAG, "Connected to AP success!");
+    ESP_LOGI(TAG, "Connected to access point success");
 
-//
-//    int sum = add_two_number(11,22);
-//    printf("\nresult: %d\n",sum);
 
     iothub_client_sample_mqtt_run();
     while(1)
