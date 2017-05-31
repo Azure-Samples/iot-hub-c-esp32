@@ -81,7 +81,6 @@ sdk/c-utility/adapters/tlsio_openssl_compact.o
 COMPONENT_SRCDIRS :=  \
 sdk/c-utility/src \
 sdk/c-utility/adapters  \
-sdk/c-utility/adapters/bad-adapters  \
 sdk/umqtt/src	\
 sdk/iothub_client/src  \
 sdk/parson	\
