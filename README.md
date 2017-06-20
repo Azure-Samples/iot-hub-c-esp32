@@ -70,8 +70,6 @@ This command will bring up a configuration dialog.
 
 1. Under "Serial flasher config --->Default serial port" set the serial port ID to that of your ESP32 device. (On Windows you can find the serial port ID under Computer Management.)
 
-1. Under "Serial flasher config --->Before flashing" set the behavior to "Reset with ESP32R0 with windows workaround" if it is available. (This applies to [both Windows and Linux](https://github.com/espressif/esp-idf/issues/305).) If this behavior is not available, use "Reset to bootloader" instead.
-
 1. Under "Example Configuration --->" enter your WiFi router SSID and password.
 
 1. Save the configuration and exit the dialog.
