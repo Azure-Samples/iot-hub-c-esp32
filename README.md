@@ -23,16 +23,35 @@ Set the IDF_PATH environment variable to point to the location of the **esp-idf*
 
 If you're using MSYS on Windows, a good place to set the IDF_PATH variable is in the `~\msys32\home\user\.bashrc` file that gets created the first time you run `msys2_shell.cmd`.
 
-## Step 4 - Download the sample code
+## Step 4 - Install the Azure IoT C SDK
 
-Clone the repository for this sample with the following command:
+Create an `azure-iot` directory in the ESP32 SDK's `components` directory:<br/>
+`mkdir $IDF_PATH/components/azure-iot`
 
-`git clone https://github.com/Azure-Samples/iot-hub-c-esp32-getstartedkit.git --recursive`
+Clone the Azure IoT C SDK into the `azure-iot` directory as `sdk`:<br/>
+`cd $IDF_PATH/components/azure-iot`<br/>
+`git clone --recursive  https://github.com/Azure/azure-iot-sdk-c.git sdk`
 
-## Step 5 - Set your device's connection string
+Copy the `component.mk` file for ESP32 into the `azure-iot` directory:<br/>
+`cp sdk/c-utility/build_all/esp32/sdk/component.mk .`
+
+## Step 5 - Create your new project
+
+Create a directory for your new project and make that directory current:<br/>
+`mkdir <myproject>`<br/>
+`cd <myproject>`
+
+Copy the project structure:<br/>
+`cp -a $IDF_PATH/components/azure-iot/sdk/c-utility/build_all/esp32/proj/. .`
+
+Copy the sample files:<br/>
+`cp $IDF_PATH/components/azure-iot/sdk/iothub_client/samples/iothub_client_sample_mqtt/iothub_client_sample_mqtt.* main`
+
+
+## Step 6 - Set your device's connection string
 
 Create and IoT Hub and an associated device identity [as shown here](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-csharp-csharp-getstarted).
-Then open the `main/iothub_client_sample_mqtt.c` file from this sample and find the line near the top that reads 
+Then open the `main/iothub_client_sample_mqtt.c` file in the `main` directory of your project and find the line near the top that reads 
 
 ```c
 static const char* connectionString = "";
@@ -41,7 +60,7 @@ static const char* connectionString = "";
 
 and set the value of the connectionString variable to the be the connection string of the device identity that you created.
 
-## Step 6 - Configure the make process
+## Step 7- Configure the make process
 
 Using the toolchain you installed in Step 2 (MSYS, for example), navigate to the location of the sample code you downloaded in Step 4 and run the following command:
 
@@ -57,7 +76,7 @@ This command will bring up a configuration dialog.
 
 1. Save the configuration and exit the dialog.
 
-## Step 7 - Run the make process
+## Step 8 - Run the make process
 
 Build the sample with the simple command:
 
@@ -65,15 +84,15 @@ Build the sample with the simple command:
 
 This will produce a iothub_client_sample_mqtt.bin file, a partitions_singleapp.bin file, a bootloader/bootloader.bin file, plus associated maps.
 
-## Step 8 - Flash the ESP32 device
+## Step 9 - Flash the ESP32 device
 
-Run the command:
+Make sure the ESP32 device is plugged in and run the command:
 
 `make flash`
 
 This will flash the project onto the ESP32 device. Alternate methods of flashing the device can be found [here](https://espressif.com/en/support/download/other-tools)
 
-## Step 9 - Monitor the device output
+## Step 10 - Monitor the device output
 
 The sample program sends status output to the device's serial port at a default 115200 baud. You monitor this output by connecting to the serial port with any terminal program such as [Putty](http://www.putty.org/).
 
