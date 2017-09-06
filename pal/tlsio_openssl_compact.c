@@ -8,13 +8,13 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include "socket_async.h"
+#include "tlsio_openssl_compact.h"
+#include "dns_async.h"
 #include "azure_c_shared_utility/gballoc.h"
-#include "azure_c_shared_utility/tlsio_openssl_compact.h"
 #include "azure_c_shared_utility/tlsio.h"
 #include "azure_c_shared_utility/xlogging.h"
 #include "azure_c_shared_utility/agenttime.h"
-#include "azure_c_shared_utility/dns_async.h"
-#include "azure_c_shared_utility/socket_async.h"
 #include "azure_c_shared_utility/singlylinkedlist.h"
 #include "azure_c_shared_utility/crt_abstractions.h"
 

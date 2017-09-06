@@ -2,8 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #include "azure_c_shared_utility/platform.h"
-#include "azure_c_shared_utility/sntp.h"
-#include "azure_c_shared_utility/tlsio_openssl_compact.h"
+#include "sntp.h"
+#include "tlsio_openssl_compact.h"
 
 static const char* const ntpServer = "pool.ntp.org";
 

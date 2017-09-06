@@ -15,7 +15,7 @@ COMPONENT_ADD_INCLUDEDIRS :=  \
 pal  \
 sdk/c-utility/inc  \
 sdk/c-utility/inc/azure_c_shared_utility \
-sdk/c-utility/inc/azure_c_shared_utility/lwip_esp32 \
+sdk/c-utility/pal/inc \
 sdk/iothub_client/inc \
 sdk/umqtt/inc  \
 sdk/umqtt/inc/azure_umqtt_c 	\
@@ -78,15 +78,16 @@ sdk/c-utility/pal/dns_async.o	\
 sdk/c-utility/pal/socket_async.o	\
 sdk/c-utility/pal/free_rtos/threadapi_freertos.o	\
 sdk/c-utility/pal/free_rtos/tickcounter_freertos.o	\
+sdk/c-utility/pal/lwip/sntp_lwip.o	\
 \
-pal/sntp_lwip.o	\
 pal/platform_openssl_compact.o	\
 pal/tlsio_openssl_compact.o	
 
 COMPONENT_SRCDIRS :=  \
 pal  \
-sdk/pal  \
-sdk/pal/free_rtos  \
+sdk/c-utility/pal  \
+sdk/c-utility/pal/free_rtos  \
+sdk/c-utility/pal/lwip  \
 sdk/c-utility/src \
 sdk/c-utility/adapters  \
 sdk/umqtt/src	\
