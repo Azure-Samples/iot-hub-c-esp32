@@ -12,6 +12,7 @@ CFLAGS += -DUSE_LWIP_SOCKET_FOR_AZURE_IOT
 #COMPONENT_SRCDIRS := sdk/iothub_client/src sdk/c-utility/src sdk/uamqp/src
 
 COMPONENT_ADD_INCLUDEDIRS :=  \
+pal  \
 sdk/c-utility/inc  \
 sdk/c-utility/inc/azure_c_shared_utility \
 sdk/c-utility/inc/azure_c_shared_utility/lwip_esp32 \
@@ -71,18 +72,21 @@ sdk/umqtt/src/mqtt_message.o	\
 \
 sdk/c-utility/adapters/agenttime.o	\
 sdk/c-utility/src/singlylinkedlist.o	\
-sdk/c-utility/adapters/threadapi_freertos.o	\
-sdk/c-utility/adapters/tickcounter_freertos.o	\
-sdk/c-utility/adapters/sntp_lwip.o	\
-sdk/c-utility/adapters/dns_async.o	\
-sdk/c-utility/adapters/socket_async.o	\
 \
 \
+sdk/c-utility/pal/dns_async.o	\
+sdk/c-utility/pal/socket_async.o	\
+sdk/c-utility/pal/free_rtos/threadapi_freertos.o	\
+sdk/c-utility/pal/free_rtos/tickcounter_freertos.o	\
+\
+pal/sntp_lwip.o	\
 pal/platform_openssl_compact.o	\
 pal/tlsio_openssl_compact.o	
 
 COMPONENT_SRCDIRS :=  \
 pal  \
+sdk/pal  \
+sdk/pal/free_rtos  \
 sdk/c-utility/src \
 sdk/c-utility/adapters  \
 sdk/umqtt/src	\
