@@ -19,50 +19,51 @@ Follow the instructions for setting up the ESP32 toolchain found [here](http://e
 
 ## Step 3 - Set IDF_PATH
 
-Set the IDF_PATH environment variable to point to the location of the **esp-idf** directory that you cloned in Step 1.
+Set the IDF_PATH environment variable to point to the location of the **esp-idf** directory that you 
+cloned in Step 1.
 
-If you're using MSYS on Windows, a good place to set the IDF_PATH variable is in the `~\msys32\home\user\.bashrc` file that gets created the first time you run `msys2_shell.cmd`.
+If you're using MSYS on Windows, a good place to set the IDF_PATH variable is in the 
+`~\msys32\home\user\.bashrc` file that gets created the first time you run `msys2_shell.cmd`.
 
 ## Step 4 - Install the Azure IoT C SDK
 
-Create an `azure-iot` directory in the ESP32 SDK's `components` directory:<br/>
-`mkdir $IDF_PATH/components/azure-iot`
+Change to the ESP32 SDK's `components` directory:<br/>
+`cd $IDF_PATH/components`<br/>
 
-Clone the Azure IoT C SDK into the `azure-iot` directory as `sdk`:<br/>
-`cd $IDF_PATH/components/azure-iot`<br/>
-`git clone --recursive  https://github.com/Azure/azure-iot-sdk-c.git sdk`
+Clone this repository into the `components` directory as `azure-iot`:<br/>
+`git clone --recursive  https://github.com/Azure-Samples/iot-hub-c-esp32.git azure-iot`
 
-Copy the `component.mk` file for ESP32 into the `azure-iot` directory:<br/>
-`cp sdk/c-utility/build_all/esp32/sdk/component.mk .`
+## Step 5 - Assemble the sample project
 
-## Step 5 - Create your new project
+Your `$IDF_PATH/components/azure-iot/sample` directory contains a sample project skeleton. You may 
+compile it from that location, or you may copy it to a new location, whichever you prefer. 
+To flesh out the skeleton,
+copy the sample files from the Azure IoT SDK into `main` directory of the copy of the sample that 
+you're using:
 
-Create a directory for your new project and make that directory current:<br/>
-`mkdir <myproject>`<br/>
-`cd <myproject>`
-
-Copy the project structure:<br/>
-`cp -a $IDF_PATH/components/azure-iot/sdk/c-utility/build_all/esp32/proj/. .`
-
-Copy the sample files:<br/>
-`cp $IDF_PATH/components/azure-iot/sdk/iothub_client/samples/iothub_client_sample_mqtt/iothub_client_sample_mqtt.* main`
-
+`sloc=$IDF_PATH/components/azure-iot/sdk/iothub_client/samples/iothub_client_sample_mqtt`<br/>
+`cp $sloc/iothub_client_sample_mqtt.h <your_sample_location>/main`<br/>
+`cp $sloc/iothub_client_sample_mqtt.c <your_sample_location>/main`
 
 ## Step 6 - Set your device's connection string
 
-Create and IoT Hub and an associated device identity [as shown here](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-csharp-csharp-getstarted).
-Then open the `main/iothub_client_sample_mqtt.c` file in the `main` directory of your project and find the line near the top that reads 
+Create an IoT Hub and an associated device identity 
+[as shown here](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-csharp-csharp-getstarted).
+Then open the `main/iothub_client_sample_mqtt.c` file in the `main` directory of your 
+project and find the line near the top that reads 
 
 ```c
 static const char* connectionString = "";
 
 ```
 
-and set the value of the connectionString variable to the be the connection string of the device identity that you created.
+and set the value of the connectionString variable to the be the connection string of the device 
+identity that you created.
 
 ## Step 7- Configure the make process
 
-Using the toolchain you installed in Step 2 (MSYS, for example), navigate to the location of the sample code you downloaded in Step 4 and run the following command:
+Using the toolchain you installed in Step 2 (MSYS, for example), navigate to the location of the 
+sample you assembled in Step 4 and run the following command:
 
 `make menuconfig`
 
