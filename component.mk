@@ -76,8 +76,8 @@ sdk/c-utility/src/singlylinkedlist.o	\
 \
 sdk/c-utility/pal/dns_async.o	\
 sdk/c-utility/pal/socket_async.o	\
-sdk/c-utility/pal/free_rtos/threadapi_freertos.o	\
-sdk/c-utility/pal/free_rtos/tickcounter_freertos.o	\
+sdk/c-utility/pal/free_rtos/threadapi.o	\
+sdk/c-utility/pal/free_rtos/tickcounter.o	\
 sdk/c-utility/pal/lwip/sntp_lwip.o	\
 \
 pal/platform_openssl_compact.o	\
